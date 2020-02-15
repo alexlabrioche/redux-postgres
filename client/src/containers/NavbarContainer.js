@@ -1,9 +1,8 @@
-import { connect } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import Navbar from '../components/navbar';
 
-const mapStateToProps = (state, props) => {
-    return state.login;
+export default function NavbarContainer() {
+  const { isAuth } = useSelector((s) => s.login);
+  return <Navbar isAuth={isAuth} />;
 }
-
-
-export default connect(mapStateToProps)(Navbar);

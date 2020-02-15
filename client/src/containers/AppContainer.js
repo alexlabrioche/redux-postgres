@@ -1,13 +1,13 @@
-import { connect } from "react-redux";
-import App from "../App";
-import { getUserAction } from "../actions";
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import App from '../App';
+import { getUserAction } from '../actions';
 
-const mapStateToProps = (state, props) => {
-  return state.login;
-};
+export default function AppContainer() {
+  const dispatch = useDispatch();
+  const user = useSelector((s) => s.login.user);
 
-const mapDispatchToProps = dispatch => ({
-  getUserAction: () => dispatch(getUserAction())
-});
+  const getUser = useCallback(() => dispatch(getUserAction()), [dispatch]);
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+  return <App getUser={getUser} user={user} />;
+}

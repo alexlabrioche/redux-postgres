@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-const Login = (props) => {
-  console.log('login', props);
+const Login = ({ loginUser, user, isAuth }) => {
   const [values, setValues] = useState({ email: '', password: '' });
 
   const handleInputChange = (event) => {
@@ -12,32 +11,12 @@ const Login = (props) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    props.logginAction(values);
-    // fetch("/api/auth/login", {
-    //   method: "POST",
-    //   body: JSON.stringify(values),
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // })
-    //   .then(res => {
-    //     console.log(res.status);
-    //     if (res.status === 200) {
-    //       props.history.push("/");
-    //     } else {
-    //       const error = new Error(res.error);
-    //       throw error;
-    //     }
-    //   })
-    //   .catch(err => {
-    //     console.error(err);
-    //     alert("Error logging in please try again");
-    //   });
+    loginUser(values);
   };
 
   return (
     <>
-      {props.user && props.isAuth && <Redirect to="/" />}
+      {user && isAuth && <Redirect to="/" />}
       <form onSubmit={onSubmit}>
         <h1>Login Below!</h1>
         <input

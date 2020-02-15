@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import PropTypes from "prop-types";
-
-const Navbar = props => {
-  console.log(props);
-
+const Navbar = ({ isAuth }) => {
   return (
     <nav>
       <ul>
@@ -15,7 +12,7 @@ const Navbar = props => {
         <li>
           <Link to="/secret">Secret</Link>
         </li>
-        {!props.isAuth && (
+        {!isAuth && (
           <li>
             <Link to="/login">Login</Link>
           </li>
@@ -26,7 +23,7 @@ const Navbar = props => {
 };
 
 Navbar.propTypes = {
-  isAuth: PropTypes.bool
+  isAuth: PropTypes.bool,
 };
 
 export default Navbar;

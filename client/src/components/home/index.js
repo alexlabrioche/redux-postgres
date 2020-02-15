@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Home = ({ registerUser, login }) => {
-  console.info('    @Home login', login);
+const Home = ({ registerUser }) => {
   const [message, setMessage] = useState(null);
   const [form, setForm] = useState({ email: '', pasword: '' });
 

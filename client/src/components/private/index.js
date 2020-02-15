@@ -1,31 +1,30 @@
-import React, {  useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const Private = (props) => {
-  const [message, setMessage] = useState("");
+const Private = ({ logoutUser }) => {
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch("/api/secret")
-      .then(res => res.text())
-      .then(res => setMessage(res));
+    fetch('/api/secret')
+      .then((res) => res.text())
+      .then((res) => setMessage(res));
   }, []);
 
   const logout = () => {
-    props.logoutAction();
-  }
+    logoutUser();
+  };
 
   return (
     <div>
-      <h1>Private</h1>
+      <h1>Je suis privé</h1>
       <p>{message}</p>
-      <button onClick={()=> logout()} >Logout</button>
+      <button onClick={() => logout()}>Logout</button>
     </div>
   );
 };
 Private.propTypes = {
   isAuth: PropTypes.bool,
-  logoutAction: PropTypes.func.isRequired
-
+  logoutUser: PropTypes.func.isRequired,
 };
 
 export default Private;

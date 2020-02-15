@@ -1,13 +1,12 @@
-import { connect } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { registerUser } from '../actions';
 import Home from '../components/home';
 
-const mapStateToProps = (state) => {
-  return state.login;
-};
+export default function HomeContainer() {
+  const dispatch = useDispatch();
 
-const mapDispatchToProps = (dispatch) => ({
-  registerUser: (data) => dispatch(registerUser(data)),
-});
+  const registerUserAction = useCallback((data) => dispatch(registerUser(data)), [dispatch]);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+  return <Home registerUser={registerUserAction} />;
+}
