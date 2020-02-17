@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:12.13.0
 
 WORKDIR /client
 ADD . /client/
