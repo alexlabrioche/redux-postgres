@@ -20,6 +20,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "engines": {
+    "node": "12.13.0"
+  },
   "proxy": "http://app:8080",
   "browserslist": [
     ">0.2%",
