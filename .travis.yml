@@ -1,34 +1,29 @@
 sudo: required
 language: node_js
 node_js:
-  - 'stable'
+- stable
 services:
-  - docker
+- docker
 cache:
   directories:
-    - node_modules
+  - node_modules
 env:
   DOCKER_COMPOSE_VERSION: 1.23.2
-
 before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L
-    https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
-    -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
-
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname
+  -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
 install:
-  - npm install
-
+- npm install
 before_script:
-  - docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
-
+- docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 script:
-  - npm test
-  - npm run test_client
-
+- npm test
+- npm run test_client
 deploy:
   provider: heroku
-  api_key: '6a7a356d-dc58-4389-ba99-961eb14cc9a0'
   app: reactpostgres
+  api_key:
+    secure: wlQqENaujRbdrXAUzJNEWpfazX+RrVtG/Uoz80DTjLFNVRrBB5+QEbufQqVkTRc0pYh62QmQnZhwxM4dT0FS0Ll45MmbA1Qj9fg4B+QnIYOHdURZEhIGvC3SWGAa/MOGzzRxFiRV6W9/b4j1ry/3eFmQ7bZhDa3bKpQ0k6zIKhY8fnj/ERwk3qZUvFjjjmzI2WYwCkC0L5sfN7ALmF4sc2JJPfwURQs/LoiIAjxjygBuEfBxD960DO0VtDGXNj7LnBRJvglpVWXqq2/mOOogOSxpOS/XkX3zTlp/rpj10Q5RkICp4iPaJKzsUpqk2RbreD2IirjXsdKoZJ34HsCPIwjbuvRbkNaM8Lxtm62W+eD8Qq/9ddEzF1tS+ErkgNKHRDfpGni4bHhfeVLhS9AiwSENCDF9ufIWzO+WTw5JAfR84YqGyBmsGhIHYN60h64o0DKsVEDlTV9SzW/dNIaWG2+yeNiXsStdoYK266YiY8Uy1mFaSRazjcbB+Y2bxEYrrjNEF66gYBrIgSGoJA9isUXAHfVNswv2tq5/BipXQwdIJclc7q8A093qpend7hGFkZh6iQjO8iEpDB2l1LzQgtCVAkvTlb/kddxXgieMzZXzdgziVBI9oZ04M/vGVPe70qX/X+XcSvhJAyhsQ1PW5GXp296aO34aNw1xjl+PfUE=
