@@ -9,7 +9,6 @@ const Home = ({ registerUser }) => {
       .then((res) => res.text())
       .then((res) => setMessage(res));
   }, []);
-
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log('              form', form);
