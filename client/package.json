@@ -21,7 +21,8 @@
     "eject": "react-scripts eject"
   },
   "engines": {
-    "node": "12.13.0"
+    "node": "12.13.0",
+    "npm": "6.x"
   },
   "proxy": "http://app:8080",
   "browserslist": [
