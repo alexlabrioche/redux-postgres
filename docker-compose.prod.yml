@@ -1,0 +1,6 @@
+version: '3'
+services:
+  app:
+    environment:
+      DATABASE_URL: postgres://ikjirdbmjyathd:e2786c558cd061f54343da61a15ed9025b410f2831814a133be248fb98b5d74c@ec2-54-195-247-108.eu-west-1.compute.amazonaws.com:5432/davt6kle6vtgpv?ssl=true
+      NODE_ENV: production
