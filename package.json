@@ -35,6 +35,9 @@
   "devDependencies": {
     "nodemon": "^2.0.0"
   },
+  "engines": {
+    "node": "12.13.0"
+  },
   "homepage": ".",
   "browserslist": [
     ">0.2%",
