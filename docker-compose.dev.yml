@@ -1,0 +1,36 @@
+version: '3'
+services:
+  app:
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://Alex:Alex@postgres:5432/reactpostgres
+      NODE_ENV: development
+
+  # Image postgres du Docker Hub
+  postgres:
+    image: postgres:10.4
+    ports:
+      - '35432:5432'
+    environment:
+      POSTGRES_USER: Alex
+      POSTGRES_PASSWORD: Alex
+      POSTGRES_DB: reactpostgres
+
+  # Client
+  client:
+    container_name: client
+    build: ./client
+    env_file: ./client/.env
+    environment:
+      - CLIENT_PORT=3000
+    expose:
+      - 3000
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./client:/client
+      - node_modules_c:/client/node_modules
+
+volumes:
+  node_modules_c:
